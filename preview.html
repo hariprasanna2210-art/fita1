@@ -1,0 +1,554 @@
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#000;
+    overflow-x:hidden;
+}
+
+/* =========================
+TOP BAR
+========================= */
+
+.top-bar{
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+
+    z-index:10000;
+
+    background:transparent;
+
+    border-bottom:none;
+
+    backdrop-filter:none;
+
+    -webkit-backdrop-filter:none;
+
+    pointer-events:none;
+
+    color:#fff;
+
+    text-align:center;
+
+    padding:10px 20px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+
+    position:relative;
+
+    width:100%;
+
+    height:100vh;
+
+    overflow:hidden;
+}
+
+/* VIDEO */
+
+.hero video{
+
+    position:absolute;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+}
+
+/* OVERLAY */
+
+.hero::before{
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.65),
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.75)
+    );
+
+    z-index:1;
+}
+
+/* =========================
+NAVBAR
+========================= */
+
+.navbar{
+
+    position:fixed;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    z-index:9999;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:48px 5% 18px;
+
+    background:rgba(0,0,0,0.12);
+
+    backdrop-filter:blur(14px);
+
+    -webkit-backdrop-filter:blur(14px);
+
+    border-bottom:1px solid rgba(255,255,255,0.06);
+
+    transition:.4s ease;
+}
+
+/* SCROLL EFFECT */
+
+.navbar.scrolled{
+
+    background:rgba(3,10,18,0.82);
+
+    padding:42px 5% 14px;
+}
+
+/* =========================
+LEFT
+========================= */
+
+.nav-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+}
+
+/* LOGOS */
+
+.logo-main{
+    width:68px;
+}
+
+.logo-small{
+    width:58px;
+}
+
+/* =========================
+MENU
+========================= */
+
+.nav-menu{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:38px;
+}
+
+.nav-menu a{
+
+    position:relative;
+
+    color:rgba(255,255,255,0.92);
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    letter-spacing:1.5px;
+
+    transition:.3s ease;
+}
+
+/* HOVER */
+
+.nav-menu a::after{
+
+    content:'';
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-8px;
+
+    width:0;
+
+    height:2px;
+
+    background:#00cfff;
+
+    transition:.3s ease;
+}
+
+.nav-menu a:hover{
+
+    color:#00cfff;
+}
+
+.nav-menu a:hover::after{
+
+    width:100%;
+}
+
+/* =========================
+BOOK BUTTON
+========================= */
+
+.book-btn{
+
+    padding:13px 24px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00cfff,
+        #0077ff
+    );
+
+    color:#fff !important;
+
+    box-shadow:
+    0 10px 30px rgba(0,207,255,0.28);
+
+    transition:.3s ease;
+
+    white-space:nowrap;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:140px;
+}
+
+.book-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 14px 40px rgba(0,207,255,0.35);
+}
+
+/* =========================
+MOBILE TOGGLE
+========================= */
+
+.menu-toggle{
+
+    display:none;
+
+    flex-direction:column;
+
+    gap:5px;
+
+    cursor:pointer;
+}
+
+.menu-toggle span{
+
+    width:26px;
+
+    height:2px;
+
+    background:#fff;
+}
+
+/* =========================
+MOBILE MENU
+========================= */
+
+.mobile-menu{
+
+    position:fixed;
+
+    top:0;
+
+    right:-100%;
+
+    width:85%;
+
+    max-width:340px;
+
+    height:100vh;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(5,15,25,0.98),
+        rgba(0,0,0,0.98)
+    );
+
+    backdrop-filter:blur(20px);
+
+    z-index:99999;
+
+    padding:100px 35px;
+
+    transition:.4s ease;
+}
+
+.mobile-menu.active{
+
+    right:0;
+}
+
+.mobile-menu a{
+
+    display:block;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    margin-bottom:28px;
+}
+
+.mobile-menu .book-btn{
+
+    width:100%;
+}
+
+/* CLOSE */
+
+.close-btn{
+
+    position:absolute;
+
+    top:25px;
+
+    right:25px;
+
+    color:#fff;
+
+    font-size:34px;
+
+    cursor:pointer;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:991px){
+
+    .nav-menu{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+    }
+
+    .navbar{
+
+        padding:42px 20px 16px;
+    }
+
+    .logo-main{
+        width:58px;
+    }
+
+    .logo-small{
+        width:48px;
+    }
+
+}
+
+@media(max-width:768px){
+
+    .top-bar{
+
+        font-size:11px;
+
+        line-height:1.4;
+
+        padding:8px 10px;
+    }
+
+    .navbar{
+
+        padding:38px 18px 14px;
+    }
+
+}
+
+</style>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+    India’s First & Only Career Development Centre For Scuba Diving
+</div>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <!-- VIDEO -->
+
+    <video autoplay muted loop playsinline>
+        <source src="https://templeadventures.alfrin.in/wp-content/uploads/2026/05/homepage_video_1.mp4" type="video/mp4">
+    </video>
+
+    <!-- NAVBAR -->
+
+    <nav class="navbar" id="navbar">
+
+        <!-- LEFT -->
+
+        <div class="nav-left">
+
+            <img class="logo-main"
+            src="https://templeadventures.alfrin.in/wp-content/uploads/2026/05/SINCE-2008-white-scaled.png">
+
+            <img class="logo-small"
+            src="https://templeadventures.alfrin.in/wp-content/uploads/2026/05/CDC-CENTRE-LOGO.webp">
+
+        </div>
+
+        <!-- MENU -->
+
+        <div class="nav-menu">
+
+            <a href="#">HOME</a>
+            <a href="#">PROGRAMS</a>
+            <a href="#">COURSES</a>
+            <a href="#">FUN DIVING</a>
+            <a href="#">STAY</a>
+            <a href="#">CONTACT</a>
+
+            <a href="#" class="book-btn">
+                BOOK NOW
+            </a>
+
+        </div>
+
+        <!-- MOBILE ICON -->
+
+        <div class="menu-toggle" onclick="openMenu()">
+
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </nav>
+
+    <!-- MOBILE MENU -->
+
+    <div class="mobile-menu" id="mobileMenu">
+
+        <div class="close-btn" onclick="closeMenu()">
+            ×
+        </div>
+
+        <a href="#">HOME</a>
+        <a href="#">PROGRAMS</a>
+        <a href="#">COURSES</a>
+        <a href="#">FUN DIVING</a>
+        <a href="#">STAY</a>
+        <a href="#">CONTACT</a>
+
+        <a href="#" class="book-btn">
+            BOOK NOW
+        </a>
+
+    </div>
+
+</section>
+
+<script>
+
+/* OPEN MENU */
+
+function openMenu(){
+
+    document
+    .getElementById("mobileMenu")
+    .classList.add("active");
+}
+
+/* CLOSE MENU */
+
+function closeMenu(){
+
+    document
+    .getElementById("mobileMenu")
+    .classList.remove("active");
+}
+
+/* SCROLL EFFECT */
+
+window.addEventListener("scroll",function(){
+
+    const navbar =
+    document.getElementById("navbar");
+
+    if(window.scrollY > 50){
+
+        navbar.classList.add("scrolled");
+
+    }else{
+
+        navbar.classList.remove("scrolled");
+    }
+
+});
+
+</script>
