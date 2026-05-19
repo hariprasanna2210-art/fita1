@@ -1,0 +1,631 @@
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+GLOBAL RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    overflow-x:hidden;
+    font-family:'Montserrat',sans-serif;
+    background:#000;
+}
+
+/* =========================
+HERO SECTION
+========================= */
+
+.temple-hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+}
+
+.temple-hero video{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transform:translate(-50%,-50%);
+}
+
+.temple-overlay{
+    position:absolute;
+    inset:0;
+    background:
+    linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.7),
+        rgba(0,0,0,0.25),
+        rgba(0,0,0,0.75)
+    );
+    z-index:1;
+}
+
+/* =========================
+PREMIUM NAVBAR
+========================= */
+
+.temple-navbar{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    z-index:9999;
+
+    padding:20px 60px;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    background:rgba(4,14,24,0.45);
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid rgba(255,255,255,0.08);
+
+    transition:all .35s ease;
+}
+
+/* =========================
+LOGO AREA
+========================= */
+
+.temple-left{
+    display:flex;
+    align-items:center;
+    gap:20px;
+}
+
+.temple-logo{
+    width:80px;
+    object-fit:contain;
+}
+
+.temple-logo-small{
+    width:70px;
+    object-fit:contain;
+}
+
+.temple-title{
+    color:#fff;
+
+    font-family:'Cinzel',serif;
+    font-size:16px;
+    font-weight:600;
+
+    line-height:1.4;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+
+    max-width:480px;
+}
+
+/* =========================
+MENU
+========================= */
+
+.temple-menu-row{
+    display:flex;
+    align-items:center;
+    gap:34px;
+}
+
+.temple-menu-item{
+    position:relative;
+}
+
+.temple-menu-item > a{
+    color:rgba(255,255,255,0.85);
+
+    text-decoration:none;
+
+    font-size:13px;
+    font-weight:600;
+
+    letter-spacing:1.4px;
+
+    position:relative;
+
+    transition:all .3s ease;
+}
+
+/* UNDERLINE EFFECT */
+
+.temple-menu-item > a::before{
+    content:'';
+
+    position:absolute;
+    left:0;
+    bottom:-8px;
+
+    width:0;
+    height:2px;
+
+    background:#00cfff;
+    border-radius:20px;
+
+    transition:.3s ease;
+}
+
+.temple-menu-item:hover > a{
+    color:#00cfff;
+}
+
+.temple-menu-item:hover > a::before{
+    width:100%;
+}
+
+/* =========================
+BUTTON
+========================= */
+
+.temple-btn{
+    padding:13px 24px;
+
+    border-radius:50px;
+
+    background:
+    linear-gradient(
+        135deg,
+        #00cfff,
+        #0077ff
+    );
+
+    color:#fff !important;
+
+    box-shadow:
+    0 10px 30px rgba(0,207,255,0.25);
+
+    transition:all .3s ease;
+}
+
+.temple-btn:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 14px 40px rgba(0,207,255,0.45);
+}
+
+/* =========================
+MEGAMENU
+========================= */
+
+.temple-megamenu{
+    position:absolute;
+
+    top:42px;
+    left:-120px;
+
+    width:850px;
+
+    padding:35px;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:35px;
+
+    background:rgba(8,18,30,0.92);
+
+    backdrop-filter:blur(25px);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:20px;
+
+    box-shadow:
+    0 20px 60px rgba(0,0,0,0.55);
+
+    opacity:0;
+    visibility:hidden;
+
+    transform:translateY(12px);
+
+    transition:all .35s ease;
+}
+
+.temple-menu-item:hover .temple-megamenu{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0);
+}
+
+/* =========================
+MEGAMENU CONTENT
+========================= */
+
+.megamenu-column h4{
+    color:#00cfff;
+
+    font-size:12px;
+    font-weight:700;
+
+    letter-spacing:2px;
+    text-transform:uppercase;
+
+    margin-bottom:18px;
+}
+
+.megamenu-column ul{
+    list-style:none;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:18px;
+}
+
+.megamenu-column a{
+    text-decoration:none;
+}
+
+.megamenu-link-title{
+    display:block;
+
+    color:#fff;
+
+    font-size:15px;
+    font-weight:600;
+
+    margin-bottom:4px;
+
+    transition:.3s ease;
+}
+
+.megamenu-link-desc{
+    color:rgba(255,255,255,0.55);
+
+    font-size:12px;
+    line-height:1.5;
+
+    transition:.3s ease;
+}
+
+.megamenu-column a:hover .megamenu-link-title{
+    color:#00cfff;
+}
+
+.megamenu-column a:hover .megamenu-link-desc{
+    color:rgba(255,255,255,0.9);
+}
+
+/* =========================
+MOBILE
+========================= */
+
+.temple-toggle{
+    display:none;
+    flex-direction:column;
+    gap:5px;
+    cursor:pointer;
+}
+
+.temple-toggle span{
+    width:26px;
+    height:2px;
+    background:#fff;
+}
+
+/* MOBILE MENU */
+
+.temple-mobile-menu{
+    position:fixed;
+
+    top:0;
+    right:-100%;
+
+    width:85%;
+    max-width:350px;
+
+    height:100vh;
+
+    background:
+    linear-gradient(
+        180deg,
+        rgba(6,16,28,0.98),
+        rgba(2,8,15,0.99)
+    );
+
+    backdrop-filter:blur(25px);
+
+    z-index:99999;
+
+    padding:100px 30px;
+
+    transition:.4s ease;
+}
+
+.temple-mobile-menu.active{
+    right:0;
+}
+
+.temple-mobile-menu a{
+    display:block;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:14px;
+    font-weight:600;
+
+    letter-spacing:2px;
+
+    margin-bottom:24px;
+}
+
+.temple-close{
+    position:absolute;
+
+    top:25px;
+    right:25px;
+
+    color:#fff;
+
+    font-size:32px;
+
+    cursor:pointer;
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:1100px){
+
+    .temple-title{
+        display:none;
+    }
+
+    .temple-menu-row{
+        gap:22px;
+    }
+
+    .temple-megamenu{
+        width:700px;
+    }
+
+}
+
+@media(max-width:991px){
+
+    .temple-navbar{
+        padding:18px 24px;
+    }
+
+    .temple-menu-row{
+        display:none;
+    }
+
+    .temple-toggle{
+        display:flex;
+    }
+
+    .temple-logo{
+        width:65px;
+    }
+
+    .temple-logo-small{
+        width:55px;
+    }
+
+}
+
+</style>
+
+<section class="temple-hero">
+
+    <!-- VIDEO -->
+    <video autoplay muted loop playsinline>
+        <source src="https://templeadventures.alfrin.in/wp-content/uploads/2026/05/homepage_video_1.mp4" type="video/mp4">
+    </video>
+
+    <div class="temple-overlay"></div>
+
+    <!-- NAVBAR -->
+    <div class="temple-navbar" id="navbar">
+
+        <!-- LEFT -->
+        <div class="temple-left">
+
+            <img class="temple-logo"
+            src="https://templeadventures.alfrin.in/wp-content/uploads/2026/05/SINCE-2008-white-scaled.png">
+
+            <img class="temple-logo-small"
+            src="https://templeadventures.alfrin.in/wp-content/uploads/2026/05/CDC-CENTRE-LOGO.webp">
+
+            <div class="temple-title">
+                India’s First & Only Career Development Centre For Scuba Diving
+            </div>
+
+        </div>
+
+        <!-- DESKTOP MENU -->
+        <div class="temple-menu-row">
+
+            <div class="temple-menu-item">
+                <a href="#">HOME</a>
+            </div>
+
+            <div class="temple-menu-item">
+
+                <a href="#">PROGRAMS</a>
+
+                <div class="temple-megamenu">
+
+                    <div class="megamenu-column">
+
+                        <h4>Explore Programs</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="#">
+                                    <span class="megamenu-link-title">
+                                        Beginner Programs
+                                    </span>
+
+                                    <span class="megamenu-link-desc">
+                                        Start your underwater journey here
+                                    </span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <span class="megamenu-link-title">
+                                        Professional Development
+                                    </span>
+
+                                    <span class="megamenu-link-desc">
+                                        Build a global scuba career
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="megamenu-column">
+
+                        <h4>Academy</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="#">
+                                    <span class="megamenu-link-title">
+                                        Instructor Training
+                                    </span>
+
+                                    <span class="megamenu-link-desc">
+                                        Become a certified dive instructor
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                    <div class="megamenu-column">
+
+                        <h4>Featured</h4>
+
+                        <ul>
+
+                            <li>
+                                <a href="#">
+                                    <span class="megamenu-link-title">
+                                        Career Roadmap 2026 →
+                                    </span>
+
+                                    <span class="megamenu-link-desc">
+                                        Explore opportunities in scuba careers
+                                    </span>
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="temple-menu-item">
+                <a href="#">COURSES</a>
+            </div>
+
+            <div class="temple-menu-item">
+                <a href="#">FUN DIVING</a>
+            </div>
+
+            <div class="temple-menu-item">
+                <a href="#">STAY</a>
+            </div>
+
+            <div class="temple-menu-item">
+                <a href="#">CONTACT</a>
+            </div>
+
+            <div class="temple-menu-item">
+                <a href="#" class="temple-btn">BOOK NOW</a>
+            </div>
+
+        </div>
+
+        <!-- MOBILE TOGGLE -->
+        <div class="temple-toggle" onclick="openMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+    </div>
+
+    <!-- MOBILE MENU -->
+
+    <div class="temple-mobile-menu" id="mobileMenu">
+
+        <div class="temple-close" onclick="closeMenu()">×</div>
+
+        <a href="#">HOME</a>
+        <a href="#">PROGRAMS</a>
+        <a href="#">COURSES</a>
+        <a href="#">FUN DIVING</a>
+        <a href="#">STAY</a>
+        <a href="#">CONTACT</a>
+        <a href="#" class="temple-btn">BOOK NOW</a>
+
+    </div>
+
+</section>
+
+<script>
+
+/* MOBILE MENU */
+
+function openMenu(){
+    document.getElementById("mobileMenu").classList.add("active");
+}
+
+function closeMenu(){
+    document.getElementById("mobileMenu").classList.remove("active");
+}
+
+/* STICKY NAV EFFECT */
+
+window.addEventListener("scroll",function(){
+
+    const nav = document.getElementById("navbar");
+
+    if(window.scrollY > 60){
+
+        nav.style.background = "rgba(5,15,25,0.88)";
+        nav.style.padding = "14px 60px";
+
+    }else{
+
+        nav.style.background = "rgba(4,14,24,0.45)";
+        nav.style.padding = "20px 60px";
+
+    }
+
+});
+
+</script>
